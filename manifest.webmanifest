@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "몽실이의 산책일기",
+  "short_name": "산책 몽실이",
+  "description": "웰시코기 몽실이와 함께 작은 산책 습관을 키워보세요.",
+  "lang": "ko-KR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8f1e4",
+  "theme_color": "#f5e9d1",
+  "icons": [
+    {"src":"assets/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"assets/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f5e9d1"><meta name="description" content="웰시코기 몽실이와 함께 작은 산책 습관을 키워보세요.">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="stylesheet" href="style.css"><title>몽실이의 산책일기</title>
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar"><div><p class="eyebrow">MY LITTLE WALKING PET</p><h1>몽실이의 산책일기 <span>🐾</span></h1></div><button class="icon-btn" id="settingsBtn" aria-label="설정">⚙</button></header>
+<section class="pet-card">
+ <div class="pet-top"><span class="level-pill" id="levelPill">LV. 1 · 꼬마 코기</span><span class="weather-mini" id="weatherMini">☀️ 맑음</span></div>
+ <div class="pet-scene"><div class="sun-dot"></div><div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><div class="grass grass-a"></div><div class="grass grass-b"></div><img id="petSprite" class="pet-sprite" src="assets/corgi-0.png" alt="픽셀아트 웰시코기 몽실이"><div class="pet-shadow"></div></div>
+ <div class="pet-name-row"><div><h2 id="petName">몽실이</h2><p id="petMood">오늘도 같이 나가자개!</p></div><div class="xp-badge"><b id="xpValue">0</b><small>XP</small></div></div>
+ <div class="xp-line"><div class="xp-label"><span>다음 성장까지</span><b id="xpProgressText">0 / 50 XP</b></div><div class="progress"><span id="xpProgress"></span></div></div>
+</section>
+<section class="message-card"><div class="message-icon">✉</div><div><p class="section-kicker">오늘의 몽실이 한마디</p><p id="dailyMessage" class="daily-message">오늘은 집 앞까지만 가볼까? 5분이면 충분해!</p></div><button class="refresh-msg" id="newMessage" aria-label="응원 메시지 바꾸기">↻</button></section>
+<section class="quick-stats"><div><span>🐾</span><b id="daysStat">0</b><small>산책한 날</small></div><div><span>⏱</span><b id="minutesStat">0</b><small>누적 분</small></div><div><span>🌱</span><b id="todayStat">0</b><small>오늘 분</small></div></section>
+<section class="mission-card"><div class="section-heading"><h3>오늘의 작은 미션</h3><span class="tag">EASY MODE</span></div><p id="missionText">현관문 밖으로 나가기 · +5 XP</p><button id="doorBtn" class="primary-btn">🚪 현관문 밖으로 나왔어요 <b>+5 XP</b></button><p class="hint" id="doorHint">문밖으로 나가기만 해도 오늘은 성공이에요.</p></section>
+<section class="timer-card"><div class="section-heading"><div><h3>산책 타이머</h3><p class="subtext">5분만 걸어도 충분히 멋진 산책이에요.</p></div><span class="timer-icon">⏱</span></div><div class="timer-display" id="timerDisplay">00:00</div><div class="timer-actions"><button class="primary-btn" id="startBtn">산책 시작</button><button class="secondary-btn" id="finishBtn" disabled>산책 완료</button></div><p class="hint center" id="timerHint">현관문을 나섰다면 시작해 주세요.</p><label class="meal-check"><input type="checkbox" id="afterMeal"> <span>🍚 식후 산책으로 기록하기</span></label></section>
+<section class="weather-card"><div class="section-heading"><h3>오늘의 날씨 미션</h3><span class="tag">직접 선택</span></div><div class="weather-options" id="weatherOptions"><button class="weather-option active" data-weather="sun">☀️<small>맑음</small></button><button class="weather-option" data-weather="cloud">☁️<small>흐림</small></button><button class="weather-option" data-weather="rain">🌧️<small>비</small></button><button class="weather-option" data-weather="cold">❄️<small>추움</small></button></div><p id="weatherMission" class="weather-mission">햇살 아래 5분 산책하기!</p></section>
+<section class="closet-card"><div class="section-heading"><h3>몽실이 옷장</h3><span class="tag">산책 보상</span></div><div class="closet-grid" id="closetGrid"></div><p class="hint">산책으로 경험치를 모으면 아이템이 열려요.</p></section>
+<section class="stats-card"><div class="section-heading"><h3>나의 산책 기록</h3><span class="tag">MY RECORD</span></div><div class="stats-grid"><div><small>총 산책</small><b id="sessionStat">0회</b></div><div><small>식후 산책</small><b id="mealStat">0회</b></div><div><small>최장 산책</small><b id="longestStat">0분</b></div><div><small>이번 주</small><b id="weekStat">0일</b></div></div><h4>최근 산책</h4><div id="historyList" class="history-list"><p class="empty">아직 기록이 없어요. 첫 산책을 시작해 봐요!</p></div></section>
+<footer><p>작은 산책도 큰 성장의 시작이에요. 🐾</p><button id="installBtn" class="install-btn hidden">홈 화면에 앱 설치하기</button><button id="notifyBtn" class="text-btn">산책 알림 켜기</button></footer>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<dialog id="settingsDialog"><form method="dialog"><div class="dialog-head"><h3>몽실이 설정</h3><button class="icon-btn" value="cancel">✕</button></div><label>강아지 이름<input id="nameInput" maxlength="12" value="몽실이"></label><p class="hint">기록은 이 기기의 브라우저에 저장됩니다.</p><div class="dialog-actions"><button class="secondary-btn" id="resetBtn" type="button">기록 초기화</button><button class="primary-btn" value="ok" id="saveNameBtn">저장</button></div></form></dialog>
+<script src="app.js"></script>
+</body></html>
